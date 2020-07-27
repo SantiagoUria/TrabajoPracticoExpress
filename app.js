@@ -2,9 +2,7 @@ const express = require('express');
 const app = express();
 const fs = require('fs');
 
-app.listen(3030,  () =>  console.log('Servidor levantado en le puerto 3030'));
-
-const concesionario = JSON.parse(fs.readFileSync(`./data/concesionarias.json`,'utf-8'))
+app.listen(3030,  () =>  console.log('Server abierto en puerto 3030'));
 
 const rutasHome = require('./Routes/home');
 const rutasSucursales = require('./Routes/sucursales');

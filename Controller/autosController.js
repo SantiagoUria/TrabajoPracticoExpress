@@ -11,23 +11,10 @@ let autosController ={
 },
  marca: (req, res) => {
     res.writeHead(200, {"Content-Type": "text/html;charset=UTF-8"});
-        let marcaId = req.params.marca;
-        let marcaElegida = [];
-		concesionarias.forEach(concesionaria =>{
-			concesionaria.autos.forEach(auto =>{
-                if(auto.marca == marcaId){
-        let marcaCiclo = auto;
-        if(marcaCiclo.marca == auto.marca){
-            marcaElegida.push(marcaCiclo)
-            res.write(marcaElegida)
+    
         
-    }
-}
-res.end()
-})
-})
 },
- marcaDato: (req, res) => {
+ marcaDato: (req , res) => {
 		res.writeHead(200, {"Content-Type": "text/html;charset=UTF-8"});
 		let marcaId = req.params.marca;
 		let datoId = req.params.dato;
@@ -53,11 +40,11 @@ res.end()
                 }
             else{
             res.write('No encontramos autos de la marca proporcionada');
+            res.end();
         }    
     })
-    res.end();
-	})
+})
 }
-};
+}
 
 module.exports = autosController;
