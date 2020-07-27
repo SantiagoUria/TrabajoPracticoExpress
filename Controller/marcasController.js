@@ -1,13 +1,18 @@
+const fs = require('fs');
+const concesionarias = JSON.parse(fs.readFileSync('./data/concesionarias.json', 'utf-8'));
 let marcasController ={
- home : (req, res) => {
+    home : (req, res) => {
     res.writeHead(200, {"Content-Type": "text/html;charset=UTF-8"});
-    res.send('mostrar marcas una de cada una');
+    res.write(concesionarias[i].autos[marcas])
+    res.end()
 },
- marca :(req, res) => {
+ marca : (req, res) => {
     res.writeHead(200, {"Content-Type": "text/html;charset=UTF-8"});
-
-    res.send('todos los autos que pertenezcan a una marca, mostrar marca, modelo y año');
+   
+res.send();
+res.end();        
 }
-};
+}
+;
 
-module.exports = marcasController;
+module.exports = marcasController
