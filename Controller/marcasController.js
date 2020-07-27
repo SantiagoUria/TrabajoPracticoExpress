@@ -4,13 +4,7 @@ const concesionarias = JSON.parse(fs.readFileSync('./data/concesionarias.json', 
 let marcasController ={
     home : (req, res) => {
     res.writeHead(200, {"Content-Type": "text/html;charset=UTF-8"});
-    concesionarias.forEach(concesionaria=>{
-           for (let i = 0; i > array.length; i++) {
-               const arrayMarcas = arrayMarcas.push(concesionaria.autos[i])
-               
-               return res.write(arrayMarcas);
-           }
-    }); res.end();
+    res.write('todas las marcas sin repetirlas')
         
 },
  marca : (req, res) => {
