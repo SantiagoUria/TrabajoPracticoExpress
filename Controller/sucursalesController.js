@@ -1,10 +1,9 @@
-const fs = require('fs');
-const concesionarias = JSON.parse(fs.readFileSync('./data/concesionarias.json', 'utf-8'));
+let database = require('../database');
 let sucursalesController ={
  home : (req, res) => {
     res.writeHead(200, {"Content-Type": "text/html;charset=UTF-8"});
-      concesionarias.forEach( concesionarias => {
-        res.write( concesionarias.sucursal + ', ' + concesionarias.direccion + ', ' + concesionarias.telefono + ' - ');
+      database.forEach( concesionaria => {
+        res.write('║Nombre: ' + concesionaria.sucursal + '.║ ║Dirección: ' + concesionaria.direccion + '.║ ║Teléfono: ' + concesionaria.telefono + '║ <br/><br/>');
     })
 res.end();
 },
@@ -15,21 +14,21 @@ sucursal: (req, res) => {
     res.writeHead(200, {"Content-Type": "text/html;charset=UTF-8"});
 
 
-    concesionarias.forEach(concesionaria=>{
+    database.forEach(concesionaria=>{
     if (concesionaria.sucursal.toLowerCase()  == sucursalId.toLowerCase()){
-        res.write(concesionaria.sucursal + ' ');
-        res.write(concesionaria.direccion + ' ');
-        res.write(concesionaria.telefono + ' ');
+        res.write('║Nombre: ' + concesionaria.sucursal + '.║ ║Dirección: ' + concesionaria.direccion + '.║ ║Teléfono: ' + concesionaria.telefono + '║ <br/><br/>');
 
+        let i= 0
         concesionaria.autos.forEach(auto=>{
-            res.write(auto.marca + ' - ' + auto.modelo + ' ~ ' + auto.anio + ' - ')
+            res.write('║Marca: ' + auto.marca + '.║ ║Modelo: ' + auto.modelo + '.║ ║Año: ' + auto.anio + '.║ ║Color: ' + auto.color + '.║<br/>')
+            i++
+            return
         })
-        res.end('cantidad de autos disponibles: ' + concesionaria.autos.lenght)
+        res.end('Cantidad de autos disponibles: ║ ' + i + ' ║')
     }
 })
 res.end('No tenemos sucursal con esa ID')
 }
-
 }
 
 module.exports = sucursalesController;
